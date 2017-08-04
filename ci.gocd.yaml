@@ -5,7 +5,7 @@ environments:
     pipelines:
       - yaml-example
 pipelines:
-  "yaml-example": # definition of yaml-example pipeline
+  yaml-example: # definition of yaml-example pipeline
     group: yaml-example
     label_template: "${mygit[:8]}"
     locking: off
@@ -14,23 +14,12 @@ pipelines:
         # keyword git says about type of material and url at once
         git: https://github.com/akshaykarle/gocd-yaml-config-example.git
         branch: master
-      upstream:
-        # type is optional here, material type is implied based on presence of pipeline and stage fields
-        # type: dependency
-        pipeline: yamlpipe1
-        stage: build
     stages: # list of stages in order
       - build: # name of stage
           clean_workspace: true
           jobs:
               elastic_profile_id: "test"
-              tasks: # ordered list of tasks to execute in job csharp
-               - fetch:
-                   pipeline: yamlpipe1
-                   stage: build
-                   job: build
-                   source: test-bin/
-                   destination: bin/
+              tasks:
                - exec: # indicates type of task
                    command: echo
                    arguments:
