@@ -1,14 +1,6 @@
 environments:
-  example:
-    environment_variables:
-      EXAMPLE_DEPLOYMENT: testing
-    pipelines:
-      - yaml-example
 pipelines:
-  yaml-example: # definition of yaml-example pipeline
-    group: example
-    label_template: "${mygit[:8]}"
-    locking: off
+  "yaml-example": # definition of yaml-example pipeline
     materials:
       mygit: # this is the name of material
         # keyword git says about type of material and url at once
