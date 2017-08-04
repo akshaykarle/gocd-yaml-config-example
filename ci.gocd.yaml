@@ -6,7 +6,7 @@ environments:
       - yaml-example
 pipelines:
   yaml-example: # definition of yaml-example pipeline
-    group: yaml-example
+    group: example
     label_template: "${mygit[:8]}"
     locking: off
     materials:
