@@ -1,4 +1,3 @@
-environments:
 pipelines:
   "yaml-example": # definition of yaml-example pipeline
     materials:
@@ -13,6 +12,6 @@ pipelines:
               elastic_profile_id: "test"
               tasks:
                - exec: # indicates type of task
-                   command: echo
+                   command: bash
                    arguments:
-                    - "hello yaml"
+                    - "-c echo hello yaml"
