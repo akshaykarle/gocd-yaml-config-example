@@ -13,4 +13,6 @@ pipelines:
               elastic_profile_id: "test"
               tasks:
                - exec: # indicates type of task
-                   command: make
+                   command: echo
+                   arguments:
+                    - Hello
