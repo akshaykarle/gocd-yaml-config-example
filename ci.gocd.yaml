@@ -5,19 +5,6 @@ environments:
     pipelines:
       - yaml-example
 pipelines:
-  yamlpipe1:
-    group: simple
-    materials:
-      mygit:  # this is the name of material
-        # says about type of material and url at once
-        git: http://my.example.org/mygit.git
-    stages:
-      - build: # name of stage
-          jobs:
-            build: # name of the job
-              tasks:
-               - exec: # indicates type of task
-                   command: make
   "yaml-example": # definition of yaml-example pipeline
     group: yaml-example
     label_template: "${mygit[:8]}"
@@ -25,8 +12,8 @@ pipelines:
     materials:
       mygit: # this is the name of material
         # keyword git says about type of material and url at once
-        git: http://my.example.org/mygit.git
-        branch: ci
+        git: https://github.com/akshaykarle/gocd-yaml-config-example.git
+        branch: master
       upstream:
         # type is optional here, material type is implied based on presence of pipeline and stage fields
         # type: dependency
@@ -37,18 +24,6 @@ pipelines:
           clean_workspace: true
           jobs:
             elastic_profile_id: "test"
-            csharp: # name of the job
-              resources:
-               - net45
-              artifacts:
-               - build:
-                   source: bin/
-                   destination: build
-               - test:
-                   source: tests/
-                   destination: test-reports/
-              tabs:
-                report: test-reports/index.html
               tasks: # ordered list of tasks to execute in job csharp
                - fetch:
                    pipeline: yamlpipe1
@@ -57,6 +32,6 @@ pipelines:
                    source: test-bin/
                    destination: bin/
                - exec: # indicates type of task
-                   command: make
+                   command: echo
                    arguments:
-                    - "VERBOSE=true"
+                    - "hello yaml"
