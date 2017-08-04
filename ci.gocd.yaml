@@ -9,8 +9,8 @@ pipelines:
     stages:
       - build: # name of stage
           jobs:
-            elastic_profile_id: "test"
             build: # name of the job
+              elastic_profile_id: "test"
               tasks:
                - exec: # indicates type of task
                    command: make
